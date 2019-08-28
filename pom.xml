@@ -22,6 +22,7 @@
     <module>happy-service-mybatis</module>
     <module>happy-service-redis</module>
     <module>happy-common</module>
+    <module>happy-other</module>
   </modules>
 
   <properties>
@@ -43,6 +44,7 @@
     <junit.version>4.12</junit.version>
     <fastjson.version>1.2.59</fastjson.version>
     <redisson.version>3.11.2</redisson.version>
+    <dubbo.version>2.7.3</dubbo.version>
   </properties>
 
 
@@ -104,6 +106,17 @@
         <groupId>org.redisson</groupId>
         <artifactId>redisson</artifactId>
         <version>${redisson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo</artifactId>
+        <version>${dubbo.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.dubbo</groupId>
+        <artifactId>dubbo-dependencies-zookeeper</artifactId>
+        <version>${dubbo.version}</version>
+        <type>pom</type>
       </dependency>
     </dependencies>
   </dependencyManagement>
