@@ -11,5 +11,7 @@
 
   <artifactId>happy-interface-dubbo</artifactId>
 
+  <dependencies>
+  </dependencies>
 
 </project>
