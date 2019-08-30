@@ -13,6 +13,8 @@ import java.io.*;
 public class TransTypeUtils {
 	private static final Logger log = LoggerFactory.getLogger(TransTypeUtils.class);
 
+    public static void main(String[] args) {
+    }
 	private TransTypeUtils() {
 
 	}
@@ -72,7 +74,7 @@ public class TransTypeUtils {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			log.error("字符串转字节{}", e);
-			throw new CodeException("编码异常", e, 1);
+            throw CodeException.ENCODE_ERROR;
 		}
 	}
 

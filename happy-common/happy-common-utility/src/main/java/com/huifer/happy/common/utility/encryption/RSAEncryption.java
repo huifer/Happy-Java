@@ -1,7 +1,6 @@
 package com.huifer.happy.common.utility.encryption;
 
 import org.apache.commons.codec.binary.Base64;
-import org.omg.CORBA.PUBLIC_MEMBER;
 
 import javax.crypto.Cipher;
 import java.security.*;
