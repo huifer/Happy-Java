@@ -25,6 +25,7 @@
     <module>happy-other</module>
     <module>happy-file</module>
     <module>happy-interface-dubbo</module>
+      <module>happy-message</module>
   </modules>
 
   <properties>
