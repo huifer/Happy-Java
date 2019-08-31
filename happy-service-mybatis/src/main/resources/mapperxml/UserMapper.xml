@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huifer.happy.mybatis.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.huifer.happy.common.entity.po.User">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="role_id" jdbcType="BIGINT" property="roleId" />
+    <result column="regist_time" jdbcType="BIGINT" property="registTime" />
+    <result column="vip_outtime" jdbcType="BIGINT" property="vipOuttime" />
+    <result column="vip_opentime" jdbcType="BIGINT" property="vipOpentime" />
+    <result column="lastlanding _time" jdbcType="BIGINT" property="lastlandingTime" />
+    <result column="user_type" jdbcType="INTEGER" property="userType" />
+    <result column="used _content" jdbcType="DECIMAL" property="usedContent" />
+    <result column="update_time" jdbcType="BIGINT" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, email, username, `password`, salt, role_id, regist_time, vip_outtime, vip_opentime, 
+    `lastlanding _time`, user_type, `used _content`, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.huifer.happy.common.entity.po.User">
+    <!--@mbg.generated-->
+    insert into t_user (id, email, username, 
+      `password`, salt, role_id, 
+      regist_time, vip_outtime, vip_opentime, 
+      `lastlanding _time`, user_type, `used _content`, 
+      update_time)
+    values (#{id,jdbcType=BIGINT}, #{email,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{roleId,jdbcType=BIGINT}, 
+      #{registTime,jdbcType=BIGINT}, #{vipOuttime,jdbcType=BIGINT}, #{vipOpentime,jdbcType=BIGINT}, 
+      #{lastlandingTime,jdbcType=BIGINT}, #{userType,jdbcType=INTEGER}, #{usedContent,jdbcType=DECIMAL}, 
+      #{updateTime,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.huifer.happy.common.entity.po.User">
+    <!--@mbg.generated-->
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="registTime != null">
+        regist_time,
+      </if>
+      <if test="vipOuttime != null">
+        vip_outtime,
+      </if>
+      <if test="vipOpentime != null">
+        vip_opentime,
+      </if>
+      <if test="lastlandingTime != null">
+        `lastlanding _time`,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="usedContent != null">
+        `used _content`,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="registTime != null">
+        #{registTime,jdbcType=BIGINT},
+      </if>
+      <if test="vipOuttime != null">
+        #{vipOuttime,jdbcType=BIGINT},
+      </if>
+      <if test="vipOpentime != null">
+        #{vipOpentime,jdbcType=BIGINT},
+      </if>
+      <if test="lastlandingTime != null">
+        #{lastlandingTime,jdbcType=BIGINT},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="usedContent != null">
+        #{usedContent,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huifer.happy.common.entity.po.User">
+    <!--@mbg.generated-->
+    update t_user
+    <set>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        role_id = #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="registTime != null">
+        regist_time = #{registTime,jdbcType=BIGINT},
+      </if>
+      <if test="vipOuttime != null">
+        vip_outtime = #{vipOuttime,jdbcType=BIGINT},
+      </if>
+      <if test="vipOpentime != null">
+        vip_opentime = #{vipOpentime,jdbcType=BIGINT},
+      </if>
+      <if test="lastlandingTime != null">
+        `lastlanding _time` = #{lastlandingTime,jdbcType=BIGINT},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="usedContent != null">
+        `used _content` = #{usedContent,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huifer.happy.common.entity.po.User">
+    <!--@mbg.generated-->
+    update t_user
+    set email = #{email,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      role_id = #{roleId,jdbcType=BIGINT},
+      regist_time = #{registTime,jdbcType=BIGINT},
+      vip_outtime = #{vipOuttime,jdbcType=BIGINT},
+      vip_opentime = #{vipOpentime,jdbcType=BIGINT},
+      `lastlanding _time` = #{lastlandingTime,jdbcType=BIGINT},
+      user_type = #{userType,jdbcType=INTEGER},
+      `used _content` = #{usedContent,jdbcType=DECIMAL},
+      update_time = #{updateTime,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

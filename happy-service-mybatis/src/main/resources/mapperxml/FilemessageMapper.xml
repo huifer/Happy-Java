@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.huifer.happy.mybatis.mapper.FilemessageMapper">
+  <resultMap id="BaseResultMap" type="com.huifer.happy.common.entity.po.Filemessage">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="filename" jdbcType="VARCHAR" property="filename" />
+    <result column="size" jdbcType="DECIMAL" property="size" />
+    <result column="burst_size" jdbcType="INTEGER" property="burstSize" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="carete_time" jdbcType="BIGINT" property="careteTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, filename, `size`, burst_size, user_id, carete_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_filemessage
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from t_filemessage
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.huifer.happy.common.entity.po.Filemessage" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_filemessage (filename, `size`, burst_size, 
+      user_id, carete_time)
+    values (#{filename,jdbcType=VARCHAR}, #{size,jdbcType=DECIMAL}, #{burstSize,jdbcType=INTEGER}, 
+      #{userId,jdbcType=BIGINT}, #{careteTime,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.huifer.happy.common.entity.po.Filemessage" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_filemessage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="filename != null">
+        filename,
+      </if>
+      <if test="size != null">
+        `size`,
+      </if>
+      <if test="burstSize != null">
+        burst_size,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="careteTime != null">
+        carete_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="filename != null">
+        #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=DECIMAL},
+      </if>
+      <if test="burstSize != null">
+        #{burstSize,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="careteTime != null">
+        #{careteTime,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.huifer.happy.common.entity.po.Filemessage">
+    <!--@mbg.generated-->
+    update t_filemessage
+    <set>
+      <if test="filename != null">
+        filename = #{filename,jdbcType=VARCHAR},
+      </if>
+      <if test="size != null">
+        `size` = #{size,jdbcType=DECIMAL},
+      </if>
+      <if test="burstSize != null">
+        burst_size = #{burstSize,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="careteTime != null">
+        carete_time = #{careteTime,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.huifer.happy.common.entity.po.Filemessage">
+    <!--@mbg.generated-->
+    update t_filemessage
+    set filename = #{filename,jdbcType=VARCHAR},
+      `size` = #{size,jdbcType=DECIMAL},
+      burst_size = #{burstSize,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=BIGINT},
+      carete_time = #{careteTime,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
