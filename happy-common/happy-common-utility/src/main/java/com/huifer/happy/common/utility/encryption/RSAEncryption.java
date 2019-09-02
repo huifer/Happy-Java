@@ -1,6 +1,8 @@
 package com.huifer.happy.common.utility.encryption;
 
 import org.apache.commons.codec.binary.Base64;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.crypto.Cipher;
 import java.security.*;
@@ -12,9 +14,10 @@ import java.security.spec.X509EncodedKeySpec;
  */
 public class RSAEncryption {
 
+    protected static final Logger log = LoggerFactory.getLogger(RSAEncryption.class);
 
-	private static byte[] PUB_KEY = null;
-	private static byte[] PRI_KEY = null;
+	private static byte[] pubKey = null;
+	private static byte[] priKey = null;
 
 	// 数字签名，密钥算法
 	private static final String RSA_KEY_ALGORITHM = "RSA";
@@ -31,11 +34,10 @@ public class RSAEncryption {
 		secureRandom.setSeed("".getBytes());
 		keygen.initialize(KEY_SIZE, secureRandom);
 		KeyPair keyPair = keygen.genKeyPair();
-		PUB_KEY = keyPair.getPublic().getEncoded();
-		PRI_KEY = keyPair.getPrivate().getEncoded();
-		System.out.println("公钥 == " + Base64.encodeBase64String(PUB_KEY));
-		System.out.println("私钥 == " + Base64.encodeBase64String(PRI_KEY));
-
+		pubKey = keyPair.getPublic().getEncoded();
+		priKey = keyPair.getPrivate().getEncoded();
+        log.info("公钥={}",Base64.encodeBase64String(pubKey));
+        log.info("私钥={}",Base64.encodeBase64String(priKey));
 	}
 
 	/**
@@ -45,10 +47,10 @@ public class RSAEncryption {
 	 * @return byte[] 数字签名
 	 */
 	public static String sign(byte[] data) throws Exception {
-		if (PUB_KEY == null || PRI_KEY == null) {
+		if (pubKey == null || priKey == null) {
 			initKey();
 		}
-		PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(PRI_KEY);
+		PKCS8EncodedKeySpec pkcs8EncodedKeySpec = new PKCS8EncodedKeySpec(priKey);
 		KeyFactory keyFactory = KeyFactory.getInstance(RSA_KEY_ALGORITHM);
 		PrivateKey priKey = keyFactory.generatePrivate(pkcs8EncodedKeySpec);
 		Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);
@@ -65,11 +67,11 @@ public class RSAEncryption {
 	 * @return boolean 成功返回true,失败返回false
 	 */
 	public static boolean verify(byte[] data, byte[] sign) throws Exception {
-		if (PUB_KEY == null || PRI_KEY == null) {
+		if (pubKey == null || priKey == null) {
 			initKey();
 		}
 		KeyFactory keyFactory = KeyFactory.getInstance(RSA_KEY_ALGORITHM);
-		X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(PUB_KEY);
+		X509EncodedKeySpec x509EncodedKeySpec = new X509EncodedKeySpec(pubKey);
 		PublicKey publicKey = keyFactory.generatePublic(x509EncodedKeySpec);
 		Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);
 		signature.initVerify(publicKey);
@@ -84,10 +86,10 @@ public class RSAEncryption {
 	 * @return byte[] 加密数据
 	 */
 	public static byte[] encryptByPubKey(byte[] data) throws Exception {
-		if (PUB_KEY == null || PRI_KEY == null) {
+		if (pubKey == null || priKey == null) {
 			initKey();
 		}
-		X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(PUB_KEY);
+		X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(pubKey);
 		KeyFactory keyFactory = KeyFactory.getInstance(RSA_KEY_ALGORITHM);
 		PublicKey publicKey = keyFactory.generatePublic(x509KeySpec);
 		Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
@@ -113,10 +115,10 @@ public class RSAEncryption {
 	 * @return byte[] 加密数据
 	 */
 	public static byte[] encryptByPriKey(byte[] data) throws Exception {
-		if (PUB_KEY == null || PRI_KEY == null) {
+		if (pubKey == null || priKey == null) {
 			initKey();
 		}
-		PKCS8EncodedKeySpec pkcs8KeySpec = new PKCS8EncodedKeySpec(PRI_KEY);
+		PKCS8EncodedKeySpec pkcs8KeySpec = new PKCS8EncodedKeySpec(priKey);
 		KeyFactory keyFactory = KeyFactory.getInstance(RSA_KEY_ALGORITHM);
 		PrivateKey privateKey = keyFactory.generatePrivate(pkcs8KeySpec);
 		Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
@@ -142,10 +144,10 @@ public class RSAEncryption {
 	 * @return byte[] 原始数据
 	 */
 	public static byte[] decryptByPubKey(byte[] data) throws Exception {
-		if (PUB_KEY == null || PRI_KEY == null) {
+		if (pubKey == null || priKey == null) {
 			initKey();
 		}
-		X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(PUB_KEY);
+		X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(pubKey);
 		KeyFactory keyFactory = KeyFactory.getInstance(RSA_KEY_ALGORITHM);
 		PublicKey publicKey = keyFactory.generatePublic(x509KeySpec);
 		Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());
@@ -171,10 +173,10 @@ public class RSAEncryption {
 	 * @return byte[] 原始数据
 	 */
 	public static byte[] decryptByPriKey(byte[] data) throws Exception {
-		if (PUB_KEY == null || PRI_KEY == null) {
+		if (pubKey == null || priKey == null) {
 			initKey();
 		}
-		PKCS8EncodedKeySpec pkcs8KeySpec = new PKCS8EncodedKeySpec(PRI_KEY);
+		PKCS8EncodedKeySpec pkcs8KeySpec = new PKCS8EncodedKeySpec(priKey);
 		KeyFactory keyFactory = KeyFactory.getInstance(RSA_KEY_ALGORITHM);
 		PrivateKey privateKey = keyFactory.generatePrivate(pkcs8KeySpec);
 		Cipher cipher = Cipher.getInstance(keyFactory.getAlgorithm());

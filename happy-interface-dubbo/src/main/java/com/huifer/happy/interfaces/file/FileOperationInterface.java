@@ -52,4 +52,14 @@ public interface FileOperationInterface {
 	 */
 	void getFileInfo(String groupName, String filename) throws Exception;
 
+	/**
+	 * 从input流中保存文件
+	 *
+	 * @param inputStream input流
+	 * @param filepath    文件路径
+	 * @throws Exception
+	 */
+	void saveFile(InputStream inputStream, String filepath) throws Exception;
+
+
 }

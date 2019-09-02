@@ -11,10 +11,8 @@ import java.io.*;
  * 类型转换工具
  */
 public class TransTypeUtils {
-	private static final Logger log = LoggerFactory.getLogger(TransTypeUtils.class);
+	protected static final Logger log = LoggerFactory.getLogger(TransTypeUtils.class);
 
-    public static void main(String[] args) {
-    }
 	private TransTypeUtils() {
 
 	}
@@ -72,9 +70,8 @@ public class TransTypeUtils {
 			log.trace("字符串转字节");
 			return str.getBytes(encoding);
 		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
 			log.error("字符串转字节{}", e);
-            throw CodeException.ENCODE_ERROR;
+			throw CodeException.ENCODE_ERROR;
 		}
 	}
 

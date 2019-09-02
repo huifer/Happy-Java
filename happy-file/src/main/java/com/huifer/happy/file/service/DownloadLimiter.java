@@ -1,38 +1,38 @@
 package com.huifer.happy.file.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 
 public class DownloadLimiter extends InputStream {
-	private InputStream is = null;
+    protected static final Logger log = LoggerFactory.getLogger(DownloadLimiter.class);
 
-	private BandwidthLimiter bandwidthLimiter = null;
+    private InputStream is = null;
 
+    private BandwidthLimiter bandwidthLimiter = null;
 
+    public DownloadLimiter(InputStream is, BandwidthLimiter bandwidthLimiter) {
+        this.is = is;
+        this.bandwidthLimiter = bandwidthLimiter;
 
-	public DownloadLimiter(InputStream is, BandwidthLimiter bandwidthLimiter) {
-		this.is = is;
-		this.bandwidthLimiter = bandwidthLimiter;
+    }
 
-	}
+    @Override
+    public int read() throws IOException {
+        if (this.bandwidthLimiter != null) {
+            this.bandwidthLimiter.limitNextBytes();
+        }
+        return this.is.read();
 
+    }
 
-
-	@Override
-	public int read() throws IOException {
-		if (this.bandwidthLimiter != null) {
-			this.bandwidthLimiter.limitNextBytes();
-		}
-		return this.is.read();
-
-	}
-
-
-
-	public int read(byte b[], int off, int len) throws IOException {
-		if (bandwidthLimiter != null) {
-			bandwidthLimiter.limitNextBytes(len);
-		}
-		return this.is.read(b, off, len);
-	}
+    @Override
+    public int read(byte[] bytes, int off, int len) throws IOException {
+        if (bandwidthLimiter != null) {
+            bandwidthLimiter.limitNextBytes(len);
+        }
+        return this.is.read(bytes, off, len);
+    }
 }

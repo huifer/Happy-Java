@@ -1,6 +1,8 @@
 package com.huifer.happy.mybatis;
 
 
+import com.huifer.happy.common.entity.po.Role;
+import com.huifer.happy.mybatis.mapper.RoleMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +20,8 @@ public class ApplicationTest {
 
     @Test
     public void add() {
-//        Role role = new Role();
-//        role.setId(0L);
-//        role.setRoleName("超级管理员");
-//        roleMapper.insert(role);
 
 
-        Role role1 = roleMapper.selectByPrimaryKey(0L);
-        List<Role> admin = roleMapper.findByRoleName("超级管理员");
-        System.out.println();
     }
 
 }
