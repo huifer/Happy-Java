@@ -26,6 +26,7 @@
     <module>happy-file</module>
     <module>happy-interface-dubbo</module>
       <module>happy-message</module>
+    <module>happy-cloud</module>
   </modules>
 
   <properties>
@@ -50,11 +51,19 @@
     <dubbo.version>2.7.3</dubbo.version>
     <logback.version>1.1.7</logback.version>
     <slf4j.version>1.7.7</slf4j.version>
+    <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
   </properties>
 
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>${spring-cloud.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
       <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
