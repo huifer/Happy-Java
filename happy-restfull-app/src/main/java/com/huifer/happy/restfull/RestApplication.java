@@ -12,9 +12,9 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableFeignClients
 @EnableDiscoveryClient
-public class Application {
+public class RestApplication {
 	public static void main(String[] args) {
-		ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
+		ConfigurableApplicationContext ctx = SpringApplication.run(RestApplication.class, args);
 	}
 	@Bean
 	@LoadBalanced

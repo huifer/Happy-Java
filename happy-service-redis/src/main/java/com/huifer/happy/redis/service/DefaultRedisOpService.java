@@ -18,7 +18,7 @@ import java.util.List;
  */
 @Service
 public class DefaultRedisOpService implements RedisOperationInterface {
-	private static final Logger log = LoggerFactory.getLogger(DefaultRedisOpService.class);
+	protected static final Logger log = LoggerFactory.getLogger(DefaultRedisOpService.class);
 
 	@Autowired
 	private StringRedisTemplate stringRedisTemplate;

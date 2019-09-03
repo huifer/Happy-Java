@@ -16,7 +16,6 @@ public class PwdUtils {
 	public static final String token = "12a16e";
 
 
-
 	public static void main(String[] args) {
 //		String uid = "12345";
 //		String encodeUid = encodeUid(uid);
@@ -25,7 +24,7 @@ public class PwdUtils {
 //		System.out.println(s);
 
 		for (int i = 0; i < 10; i++) {
-			String substring = UUID.randomUUID().toString().replace("-", "").substring(0,6);
+			String substring = UUID.randomUUID().toString().replace("-", "").substring(0, 6);
 			System.out.println(substring);
 		}
 	}
@@ -38,13 +37,15 @@ public class PwdUtils {
 	}
 
 	public static String toHexString(byte[] byteArray) {
-		if (byteArray == null || byteArray.length < 1)
+		if (byteArray == null || byteArray.length < 1) {
 			throw new IllegalArgumentException("this byteArray must not be null or empty");
+		}
 
 		final StringBuilder hexString = new StringBuilder();
 		for (int i = 0; i < byteArray.length; i++) {
-			if ((byteArray[i] & 0xff) < 0x10)//0~F前面不零
+			if ((byteArray[i] & 0xff) < 0x10) {
 				hexString.append("0");
+			}
 			hexString.append(Integer.toHexString(0xFF & byteArray[i]));
 		}
 		return hexString.toString().toLowerCase();
