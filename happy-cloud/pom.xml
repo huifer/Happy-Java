@@ -13,6 +13,7 @@
   <packaging>pom</packaging>
   <modules>
     <module>happy-eureka-server</module>
+    <module>happy-admin-server</module>
   </modules>
 
 

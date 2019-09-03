@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: happy-eureka-server
+  cloud:
+    inetutils:
+      ignoredInterfaces:
+        - docker0
+        - veth.*
+        - VM.*
+      preferredNetworks:
+        - 192.168
+
+eureka:
+  server:
+    enable-self-preservation: false
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
+
+server:
+  port: 8761
+
+
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: root
+    password: root
