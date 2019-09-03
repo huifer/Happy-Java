@@ -5,7 +5,6 @@ spring:
   cloud:
     client:
       ipAddress: localhost
-
     config:
       fail-fast: true
       discovery:
@@ -26,6 +25,7 @@ spring:
 
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/default?useAffectedRows=true&useSSL=false
     username: root
     password: root
 
@@ -42,7 +42,8 @@ eureka:
       defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
   instance:
     health-check-url-path: /actuator/health
-
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
 ---
 management:
   endpoints:
@@ -52,3 +53,6 @@ management:
   endpoint:
     health:
       show-details: ALWAYS
+ribbon:
+  eureka:
+    enabled: true

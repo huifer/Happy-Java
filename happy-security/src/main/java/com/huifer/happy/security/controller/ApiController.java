@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiController {
 
 
-	@GetMapping("/hello")
 	@ApiOperation(value = "hello", notes = "返回输入值")
+	@GetMapping("/hello")
 	public String hello(
 			@ApiParam(value = "姓名") @RequestParam("name") String name
 	) {

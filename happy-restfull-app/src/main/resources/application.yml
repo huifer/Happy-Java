@@ -1,2 +1,53 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
+    register-with-eureka: true
+  instance:
+    health-check-url-path: /actuator/health
+    ip-address: localhost
+    prefer-ip-address: true
+---
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
+---
+spring:
+  application:
+    name: rest_api
+  cloud:
+    client:
+      ipAddress: localhost
+    config:
+      fail-fast: true
+      discovery:
+        service-id: rest_api
+        enabled: true
+      username: admin
+      password: admin
+  boot:
+    admin:
+      client:
+        url: "http://localhost:8084"
+        username: "admin"
+        password: "admin"
+        instance:
+          prefer-ip: true
 server:
   port: 9000
+
+
+happy-security:
+  ribbon:
+    eureka:
+      enabled: false
+
+test-work1:
+  ribbon:
+    eureka:
+      enabled: false
