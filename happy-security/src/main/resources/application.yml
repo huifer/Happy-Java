@@ -43,7 +43,7 @@ eureka:
   instance:
     health-check-url-path: /actuator/health
     prefer-ip-address: true
-    ip-address: 127.0.0.1
+    ip-address: localhost
 ---
 management:
   endpoints:

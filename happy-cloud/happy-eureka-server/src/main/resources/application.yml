@@ -1,14 +1,14 @@
 spring:
   application:
     name: happy-eureka-server
-  cloud:
-    inetutils:
-      ignoredInterfaces:
-        - docker0
-        - veth.*
-        - VM.*
-      preferredNetworks:
-        - 192.168
+#  cloud:
+#    inetutils:
+#      ignoredInterfaces:
+#        - docker0
+#        - veth.*
+#        - VM.*
+#      preferredNetworks:
+#        - 192.168
 
 eureka:
   server:
