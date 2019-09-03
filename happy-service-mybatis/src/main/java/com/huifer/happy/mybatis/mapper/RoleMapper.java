@@ -1,19 +1,19 @@
 package com.huifer.happy.mybatis.mapper;
 
-import com.huifer.happy.common.entity.po.Role;
+import com.huifer.happy.common.entity.po.RolePO;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface RoleMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Role record);
+    int insert(RolePO record);
 
-    int insertSelective(Role record);
+    int insertSelective(RolePO record);
 
-    Role selectByPrimaryKey(Long id);
+    RolePO selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Role record);
+    int updateByPrimaryKeySelective(RolePO record);
 
-    int updateByPrimaryKey(Role record);
+    int updateByPrimaryKey(RolePO record);
 }

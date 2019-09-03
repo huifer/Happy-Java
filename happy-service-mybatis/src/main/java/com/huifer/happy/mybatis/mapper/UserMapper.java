@@ -1,19 +1,19 @@
 package com.huifer.happy.mybatis.mapper;
 
-import com.huifer.happy.common.entity.po.User;
+import com.huifer.happy.common.entity.po.UserPO;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UserMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(User record);
+    int insert(UserPO record);
 
-    int insertSelective(User record);
+    int insertSelective(UserPO record);
 
-    User selectByPrimaryKey(Long id);
+    UserPO selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(User record);
+    int updateByPrimaryKeySelective(UserPO record);
 
-    int updateByPrimaryKey(User record);
+    int updateByPrimaryKey(UserPO record);
 }

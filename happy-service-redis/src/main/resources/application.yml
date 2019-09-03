@@ -5,8 +5,9 @@ spring:
         max-idle: 8
         max-wait: -1ms
         min-idle: 0
-    host: localhost
+    host: 192.168.0.111
     port: 6379
     database: 10
+    password: huifer
 server:
   port: 9010

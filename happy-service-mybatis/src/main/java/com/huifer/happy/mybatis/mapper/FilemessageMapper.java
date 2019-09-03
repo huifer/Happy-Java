@@ -1,19 +1,19 @@
 package com.huifer.happy.mybatis.mapper;
 
-import com.huifer.happy.common.entity.po.Filemessage;
+import com.huifer.happy.common.entity.po.FilemessagePO;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface FilemessageMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Filemessage record);
+    int insert(FilemessagePO record);
 
-    int insertSelective(Filemessage record);
+    int insertSelective(FilemessagePO record);
 
-    Filemessage selectByPrimaryKey(Long id);
+    FilemessagePO selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Filemessage record);
+    int updateByPrimaryKeySelective(FilemessagePO record);
 
-    int updateByPrimaryKey(Filemessage record);
+    int updateByPrimaryKey(FilemessagePO record);
 }

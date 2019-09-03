@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huifer.happy.mybatis.mapper.UserMapper">
-  <resultMap id="BaseResultMap" type="com.huifer.happy.common.entity.po.User">
+  <resultMap id="BaseResultMap" type="com.huifer.happy.common.entity.po.UserPO">
     <!--@mbg.generated-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="email" jdbcType="VARCHAR" property="email" />
@@ -34,7 +34,7 @@
     delete from t_user
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.huifer.happy.common.entity.po.User">
+  <insert id="insert" parameterType="com.huifer.happy.common.entity.po.UserPO">
     <!--@mbg.generated-->
     insert into t_user (id, email, username, 
       `password`, salt, role_id, 
@@ -47,7 +47,7 @@
       #{lastlandingTime,jdbcType=BIGINT}, #{userType,jdbcType=INTEGER}, #{usedContent,jdbcType=DECIMAL}, 
       #{updateTime,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.huifer.happy.common.entity.po.User">
+  <insert id="insertSelective" parameterType="com.huifer.happy.common.entity.po.UserPO">
     <!--@mbg.generated-->
     insert into t_user
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -133,7 +133,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.huifer.happy.common.entity.po.User">
+  <update id="updateByPrimaryKeySelective" parameterType="com.huifer.happy.common.entity.po.UserPO">
     <!--@mbg.generated-->
     update t_user
     <set>
@@ -176,7 +176,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.huifer.happy.common.entity.po.User">
+  <update id="updateByPrimaryKey" parameterType="com.huifer.happy.common.entity.po.UserPO">
     <!--@mbg.generated-->
     update t_user
     set email = #{email,jdbcType=VARCHAR},

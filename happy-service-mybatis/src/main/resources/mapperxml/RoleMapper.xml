@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huifer.happy.mybatis.mapper.RoleMapper">
-  <resultMap id="BaseResultMap" type="com.huifer.happy.common.entity.po.Role">
+  <resultMap id="BaseResultMap" type="com.huifer.happy.common.entity.po.RolePO">
     <!--@mbg.generated-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="role_name" jdbcType="VARCHAR" property="roleName" />
@@ -22,12 +22,12 @@
     delete from t_role
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.huifer.happy.common.entity.po.Role">
+  <insert id="insert" parameterType="com.huifer.happy.common.entity.po.RolePO">
     <!--@mbg.generated-->
     insert into t_role (id, role_name)
     values (#{id,jdbcType=BIGINT}, #{roleName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.huifer.happy.common.entity.po.Role">
+  <insert id="insertSelective" parameterType="com.huifer.happy.common.entity.po.RolePO">
     <!--@mbg.generated-->
     insert into t_role
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -47,7 +47,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.huifer.happy.common.entity.po.Role">
+  <update id="updateByPrimaryKeySelective" parameterType="com.huifer.happy.common.entity.po.RolePO">
     <!--@mbg.generated-->
     update t_role
     <set>
@@ -57,7 +57,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.huifer.happy.common.entity.po.Role">
+  <update id="updateByPrimaryKey" parameterType="com.huifer.happy.common.entity.po.RolePO">
     <!--@mbg.generated-->
     update t_role
     set role_name = #{roleName,jdbcType=VARCHAR}

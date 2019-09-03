@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huifer.happy.mybatis.mapper.FilemessageMapper">
-  <resultMap id="BaseResultMap" type="com.huifer.happy.common.entity.po.Filemessage">
+  <resultMap id="BaseResultMap" type="com.huifer.happy.common.entity.po.FilemessagePO">
     <!--@mbg.generated-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="filename" jdbcType="VARCHAR" property="filename" />
@@ -26,14 +26,14 @@
     delete from t_filemessage
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.huifer.happy.common.entity.po.Filemessage" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.huifer.happy.common.entity.po.FilemessagePO" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into t_filemessage (filename, `size`, burst_size, 
       user_id, carete_time)
     values (#{filename,jdbcType=VARCHAR}, #{size,jdbcType=DECIMAL}, #{burstSize,jdbcType=INTEGER}, 
       #{userId,jdbcType=BIGINT}, #{careteTime,jdbcType=BIGINT})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.huifer.happy.common.entity.po.Filemessage" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.huifer.happy.common.entity.po.FilemessagePO" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into t_filemessage
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -71,7 +71,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.huifer.happy.common.entity.po.Filemessage">
+  <update id="updateByPrimaryKeySelective" parameterType="com.huifer.happy.common.entity.po.FilemessagePO">
     <!--@mbg.generated-->
     update t_filemessage
     <set>
@@ -93,7 +93,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.huifer.happy.common.entity.po.Filemessage">
+  <update id="updateByPrimaryKey" parameterType="com.huifer.happy.common.entity.po.FilemessagePO">
     <!--@mbg.generated-->
     update t_filemessage
     set filename = #{filename,jdbcType=VARCHAR},

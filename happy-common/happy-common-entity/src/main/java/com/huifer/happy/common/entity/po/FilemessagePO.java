@@ -1,6 +1,8 @@
 package com.huifer.happy.common.entity.po;
 
-public class Filemessage {
+import java.math.BigDecimal;
+
+public class FilemessagePO {
     /**
     * 主键
     */
@@ -14,7 +16,7 @@ public class Filemessage {
     /**
     * 文件大小
     */
-    private Long size;
+    private BigDecimal size;
 
     /**
     * 分片数
@@ -47,11 +49,11 @@ public class Filemessage {
         this.filename = filename;
     }
 
-    public Long getSize() {
+    public BigDecimal getSize() {
         return size;
     }
 
-    public void setSize(Long size) {
+    public void setSize(BigDecimal size) {
         this.size = size;
     }
 

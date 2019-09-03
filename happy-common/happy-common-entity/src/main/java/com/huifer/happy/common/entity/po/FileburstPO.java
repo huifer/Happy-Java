@@ -1,6 +1,6 @@
 package com.huifer.happy.common.entity.po;
 
-public class Fileburst {
+public class FileburstPO {
     /**
     * 主键
     */

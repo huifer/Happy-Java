@@ -1,19 +1,19 @@
 package com.huifer.happy.mybatis.mapper;
 
-import com.huifer.happy.common.entity.po.Fileburst;
+import com.huifer.happy.common.entity.po.FileburstPO;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface FileburstMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Fileburst record);
+    int insert(FileburstPO record);
 
-    int insertSelective(Fileburst record);
+    int insertSelective(FileburstPO record);
 
-    Fileburst selectByPrimaryKey(Long id);
+    FileburstPO selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(Fileburst record);
+    int updateByPrimaryKeySelective(FileburstPO record);
 
-    int updateByPrimaryKey(Fileburst record);
+    int updateByPrimaryKey(FileburstPO record);
 }

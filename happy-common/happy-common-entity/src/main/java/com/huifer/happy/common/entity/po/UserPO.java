@@ -2,7 +2,7 @@ package com.huifer.happy.common.entity.po;
 
 import java.math.BigDecimal;
 
-public class User {
+public class UserPO {
     /**
     * id
     */

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.huifer.happy.mybatis.mapper.FileburstMapper">
-  <resultMap id="BaseResultMap" type="com.huifer.happy.common.entity.po.Fileburst">
+  <resultMap id="BaseResultMap" type="com.huifer.happy.common.entity.po.FileburstPO">
     <!--@mbg.generated-->
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="filename" jdbcType="VARCHAR" property="filename" />
@@ -24,14 +24,14 @@
     delete from t_fileburst
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.huifer.happy.common.entity.po.Fileburst" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.huifer.happy.common.entity.po.FileburstPO" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into t_fileburst (filename, burst_id, url
       )
     values (#{filename,jdbcType=VARCHAR}, #{burstId,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.huifer.happy.common.entity.po.Fileburst" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.huifer.happy.common.entity.po.FileburstPO" useGeneratedKeys="true">
     <!--@mbg.generated-->
     insert into t_fileburst
     <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -57,7 +57,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.huifer.happy.common.entity.po.Fileburst">
+  <update id="updateByPrimaryKeySelective" parameterType="com.huifer.happy.common.entity.po.FileburstPO">
     <!--@mbg.generated-->
     update t_fileburst
     <set>
@@ -73,7 +73,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.huifer.happy.common.entity.po.Fileburst">
+  <update id="updateByPrimaryKey" parameterType="com.huifer.happy.common.entity.po.FileburstPO">
     <!--@mbg.generated-->
     update t_fileburst
     set filename = #{filename,jdbcType=VARCHAR},
