@@ -1,5 +1,6 @@
 package com.huifer.happy.redis.controller;
 
+import com.huifer.happy.redis.entity.RedisKey;
 import com.huifer.happy.redis.service.RedisViewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * 描述:
@@ -22,6 +24,12 @@ public class RedisController {
 
 	@Autowired
 	private RedisViewService redisViewService;
+
+
+	@GetMapping("/")
+	public Set<RedisKey> getKeys() throws Exception {
+		 return redisViewService.keys();
+	}
 
 	/**
 	 * 获取所有key

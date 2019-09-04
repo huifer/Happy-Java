@@ -1,16 +1,19 @@
 package com.huifer.happy.redis.service;
 
 import com.huifer.happy.common.entity.base.RedisKeys;
+import com.huifer.happy.redis.entity.RedisKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.connection.DataType;
+import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 /**
@@ -23,10 +26,9 @@ import java.util.stream.Collectors;
 @Service
 public class RedisViewService {
 	@Autowired
-	private StringRedisTemplate stringRedisTemplate;
+	private RedisTemplate redisTemplate;
 
 	protected static final Logger log = LoggerFactory.getLogger(RedisViewService.class);
-
 
 
 	/**
@@ -46,7 +48,7 @@ public class RedisViewService {
 				return null;
 			}
 		} else {
-			Set<String> keys = stringRedisTemplate.keys("*");
+			Set<String> keys = redisTemplate.keys("*");
 			return keys.stream().collect(Collectors.toList());
 		}
 	}
@@ -70,4 +72,63 @@ public class RedisViewService {
 		}
 		return res;
 	}
+
+	/**
+	 * 返回所有类
+	 *
+	 * @return {@link RedisKey} set集合
+	 */
+	public Set<RedisKey> keys() {
+		log.trace("开始获取所有redis-key");
+		Set keys = redisTemplate.keys("*");Set<RedisKey> redisKeys = new TreeSet<>();
+		keys.forEach(k -> {
+			RedisKey redisKey = new RedisKey();
+			redisKey.setKey(k);
+			redisKey.setDataType(redisTemplate.type(k));
+			redisKey.setValue(getValue(k, redisTemplate.type(k)));
+			redisKeys.add(redisKey);
+		});
+		log.info("获取到的redis-key={}", redisKeys);
+		return redisKeys;
+	}
+
+	/**
+	 * 获取redis中k-v
+	 *
+	 * @param key      需要搜索的key
+	 * @param dataType 当前key的类型{@link DataType}
+	 * @return Object value
+	 */
+	private Object getValue(Object key, DataType dataType) {
+		Object value = null;
+		switch (dataType) {
+			case SET:
+				SetOperations setOperations = redisTemplate.opsForSet();
+				value = setOperations.members(key);
+				break;
+			case HASH:
+				HashOperations hashOperations = redisTemplate.opsForHash();
+				value = hashOperations.entries(key);
+				break;
+			case LIST:
+				ListOperations listOperations = redisTemplate.opsForList();
+				value = listOperations.range(key, 0, -1);
+				break;
+			case ZSET:
+				ZSetOperations zSetOperations = redisTemplate.opsForZSet();
+				value = zSetOperations.range(key, 0, -1);
+				break;
+			case STRING:
+				ValueOperations valueOperations = redisTemplate.opsForValue();
+				value = valueOperations.get(key);
+				break;
+			default:
+				break;
+		}
+		return value;
+
+	}
+
+
+
 }
