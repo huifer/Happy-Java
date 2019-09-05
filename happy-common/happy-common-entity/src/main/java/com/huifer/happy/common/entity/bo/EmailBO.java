@@ -13,12 +13,12 @@ import lombok.Data;
 @Data
 public class EmailBO extends BaseMessage {
 
-	/**
-	 * 发送方邮箱
-	 */
-	private String sendEmail;
-	/**
-	 * 发送时间
-	 */
-	private Long sendTime;
+    /**
+     * 发送方邮箱
+     */
+    private String sendEmail;
+    /**
+     * 发送时间
+     */
+    private Long sendTime;
 }

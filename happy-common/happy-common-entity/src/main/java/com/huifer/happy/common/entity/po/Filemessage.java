@@ -2,33 +2,33 @@ package com.huifer.happy.common.entity.po;
 
 public class Filemessage {
     /**
-    * 主键
-    */
+     * 主键
+     */
     private Long id;
 
     /**
-    * 文件名称
-    */
+     * 文件名称
+     */
     private String filename;
 
     /**
-    * 文件大小
-    */
+     * 文件大小
+     */
     private Long size;
 
     /**
-    * 分片数
-    */
+     * 分片数
+     */
     private Integer burstSize;
 
     /**
-    * 用户id
-    */
+     * 用户id
+     */
     private Long userId;
 
     /**
-    * 创建时间
-    */
+     * 创建时间
+     */
     private Long careteTime;
 
     public Long getId() {

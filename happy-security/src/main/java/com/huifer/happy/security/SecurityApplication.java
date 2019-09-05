@@ -10,7 +10,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @EnableDiscoveryClient
 @EnableFeignClients
 public class SecurityApplication {
-	public static void main(String[] args) {
-		ConfigurableApplicationContext ctx = SpringApplication.run(SecurityApplication.class, args);
-	}
+    public static void main(String[] args) {
+        ConfigurableApplicationContext ctx = SpringApplication.run(SecurityApplication.class, args);
+    }
 }

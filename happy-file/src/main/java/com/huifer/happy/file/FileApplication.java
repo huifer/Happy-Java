@@ -6,7 +6,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class FileApplication {
-	public static void main(String[] args) {
-		ConfigurableApplicationContext ctx = SpringApplication.run(FileApplication.class, args);
-	}
+    public static void main(String[] args) {
+        ConfigurableApplicationContext ctx = SpringApplication.run(FileApplication.class, args);
+    }
 }

@@ -22,25 +22,25 @@ import java.util.Set;
 public class RedisController {
 
 
-	@Autowired
-	private RedisViewService redisViewService;
+    @Autowired
+    private RedisViewService redisViewService;
 
 
-	@GetMapping("/")
-	public Set<RedisKey> getKeys() throws Exception {
-		 return redisViewService.keys();
-	}
+    @GetMapping("/")
+    public Set<RedisKey> getKeys() throws Exception {
+        return redisViewService.keys();
+    }
 
-	/**
-	 * 获取所有key
-	 *
-	 * @param isSystem 是否系统内
-	 * @return
-	 */
-	@GetMapping("/keys")
-	public List<String> getKeys(
-			@RequestParam(value = "is_system", defaultValue = "true") boolean isSystem
-	) throws Exception {
-		return redisViewService.queryKey(isSystem);
-	}
+    /**
+     * 获取所有key
+     *
+     * @param isSystem 是否系统内
+     * @return
+     */
+    @GetMapping("/keys")
+    public List<String> getKeys(
+            @RequestParam(value = "is_system", defaultValue = "true") boolean isSystem
+    ) throws Exception {
+        return redisViewService.queryKey(isSystem);
+    }
 }

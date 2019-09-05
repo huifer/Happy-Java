@@ -17,12 +17,11 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 @Service
 public class LimiterFileService {
-    protected static final Logger log = LoggerFactory.getLogger(LimiterFileService.class);
-
     /**
      * 下载计数器:记录有多少个下载请求
      */
     public static final AtomicInteger DOWNLOAD_NUM = new AtomicInteger();
+    protected static final Logger log = LoggerFactory.getLogger(LimiterFileService.class);
     /**
      * 最大下载速度,单位：kb
      */
