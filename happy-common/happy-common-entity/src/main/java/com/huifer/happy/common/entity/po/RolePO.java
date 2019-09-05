@@ -2,13 +2,13 @@ package com.huifer.happy.common.entity.po;
 
 public class RolePO {
     /**
-    * id
-    */
+     * id
+     */
     private Long id;
 
     /**
-    * 权限:0,管理员1.普通用户,2.vip
-    */
+     * 权限:0,管理员1.普通用户,2.vip
+     */
     private String roleName;
 
     public Long getId() {

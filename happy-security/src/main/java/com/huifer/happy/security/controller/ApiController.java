@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class ApiController {
 
 
-	@Value("${server.port}")
-	private int port;
+    @Value("${server.port}")
+    private int port;
 
-	@ApiOperation(value = "hello", notes = "返回输入值")
-	@GetMapping("/hello")
-	public String hello(
-			@ApiParam(value = "姓名") @RequestParam("name") String name
-	) {
-		System.out.println("当前访问接口={}" + port);
-		return name;
-	}
+    @ApiOperation(value = "hello", notes = "返回输入值")
+    @GetMapping("/hello")
+    public String hello(
+            @ApiParam(value = "姓名") @RequestParam("name") String name
+    ) {
+        System.out.println("当前访问接口={}" + port);
+        return name;
+    }
 }

@@ -4,68 +4,68 @@ import java.math.BigDecimal;
 
 public class UserPO {
     /**
-    * id
-    */
+     * id
+     */
     private Long id;
 
     /**
-    * 邮箱
-    */
+     * 邮箱
+     */
     private String email;
 
     /**
-    * 登录名
-    */
+     * 登录名
+     */
     private String username;
 
     /**
-    * 密码
-    */
+     * 密码
+     */
     private String password;
 
     /**
-    * 盐
-    */
+     * 盐
+     */
     private String salt;
 
     /**
-    * 从t_role传递id
-    */
+     * 从t_role传递id
+     */
     private Long roleId;
 
     /**
-    * 注册时间
-    */
+     * 注册时间
+     */
     private Long registTime;
 
     /**
-    * vip过期时间
-    */
+     * vip过期时间
+     */
     private Long vipOuttime;
 
     /**
-    * vip开通时间
-    */
+     * vip开通时间
+     */
     private Long vipOpentime;
 
     /**
-    * 上次登录时间
-    */
+     * 上次登录时间
+     */
     private Long lastlandingTime;
 
     /**
-    * 用户类型:0:管理员;1:vip;2:普通用户
-    */
+     * 用户类型:0:管理员;1:vip;2:普通用户
+     */
     private Integer userType;
 
     /**
-    * 已用文件空间
-    */
+     * 已用文件空间
+     */
     private BigDecimal usedContent;
 
     /**
-    * 修改时间
-    */
+     * 修改时间
+     */
     private Long updateTime;
 
     public Long getId() {

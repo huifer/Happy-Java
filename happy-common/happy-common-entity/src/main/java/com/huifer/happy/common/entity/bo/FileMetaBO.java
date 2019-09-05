@@ -6,9 +6,9 @@ import java.util.List;
 
 @Data
 public class FileMetaBO {
-	private String groupName;
-	private String remoteFilename;
-	private String storageServersCount;
-	private List<String> ipPorts;
-	private String url;
+    private String groupName;
+    private String remoteFilename;
+    private String storageServersCount;
+    private List<String> ipPorts;
+    private String url;
 }

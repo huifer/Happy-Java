@@ -11,16 +11,16 @@ import lombok.Data;
 @Data
 public class BaseMessage {
 
-	/**
-	 * 发送方
-	 */
-	private String from;
-	/**
-	 * 接收方
-	 */
-	private String to;
-	/**
-	 * 消息内容
-	 */
-	private String message;
+    /**
+     * 发送方
+     */
+    private String from;
+    /**
+     * 接收方
+     */
+    private String to;
+    /**
+     * 消息内容
+     */
+    private String message;
 }

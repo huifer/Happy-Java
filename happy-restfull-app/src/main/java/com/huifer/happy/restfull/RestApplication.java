@@ -13,12 +13,13 @@ import org.springframework.web.client.RestTemplate;
 @EnableFeignClients
 @EnableDiscoveryClient
 public class RestApplication {
-	public static void main(String[] args) {
-		ConfigurableApplicationContext ctx = SpringApplication.run(RestApplication.class, args);
-	}
-	@Bean
-	@LoadBalanced
-	public RestTemplate getRestTemplate() {
-		return new RestTemplate();
-	}
+    public static void main(String[] args) {
+        ConfigurableApplicationContext ctx = SpringApplication.run(RestApplication.class, args);
+    }
+
+    @Bean
+    @LoadBalanced
+    public RestTemplate getRestTemplate() {
+        return new RestTemplate();
+    }
 }

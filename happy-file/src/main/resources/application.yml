@@ -1,1 +1,8 @@
 max.download.speed: 500
+
+
+tus:
+  max-size: 500000000
+  upload-path: "C:\\dev\\dw\\"
+server:
+  port: 9090

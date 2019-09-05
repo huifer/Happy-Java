@@ -13,34 +13,32 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 public class HeartController {
-	@RequestMapping("/heart")
-	public String heart() {
-		return "i'm ok!";
-	}
+    @Autowired
+    private SecurityFeign securityFeign;
+    @Autowired
+    private Feign feign;
+    @Autowired
+    private DiscoveryClient discoveryClient;
+    @Autowired
+    private RestTemplate restTemplate;
 
-	@Autowired
-	private SecurityFeign securityFeign;
-	@Autowired
-	private Feign feign;
+    @RequestMapping("/heart")
+    public String heart() {
+        return "i'm ok!";
+    }
 
-	@Autowired
-	private DiscoveryClient discoveryClient;
+    @GetMapping("/hello")
+    public String hello(
+            @RequestParam("name") String name
+    ) {
+        String zhangsan = securityFeign.hello(name);
+        return zhangsan;
+    }
 
-	@GetMapping("/hello")
-	public String hello(
-			@RequestParam("name") String name
-	) {
-		String zhangsan = securityFeign.hello(name);
-		return zhangsan;
-	}
-
-	@Autowired
-	private RestTemplate restTemplate;
-
-	@GetMapping("/2")
-	public void h2() {
-		String s = feign.work1();
-		ResponseEntity<String> forEntity = restTemplate.getForEntity("http://test-work1/work1", String.class);
-		System.out.println();
-	}
+    @GetMapping("/2")
+    public void h2() {
+        String s = feign.work1();
+        ResponseEntity<String> forEntity = restTemplate.getForEntity("http://test-work1/work1", String.class);
+        System.out.println();
+    }
 }

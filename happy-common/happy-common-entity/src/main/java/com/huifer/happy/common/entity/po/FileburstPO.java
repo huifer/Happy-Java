@@ -2,23 +2,23 @@ package com.huifer.happy.common.entity.po;
 
 public class FileburstPO {
     /**
-    * 主键
-    */
+     * 主键
+     */
     private Long id;
 
     /**
-    * 文件名称
-    */
+     * 文件名称
+     */
     private String filename;
 
     /**
-    * 分片id, 相同文件名+burst_id 组合后成为一个文件
-    */
+     * 分片id, 相同文件名+burst_id 组合后成为一个文件
+     */
     private Integer burstId;
 
     /**
-    * 文件地址
-    */
+     * 文件地址
+     */
     private String url;
 
     public Long getId() {

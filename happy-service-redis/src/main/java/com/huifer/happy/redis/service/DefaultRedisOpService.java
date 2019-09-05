@@ -18,61 +18,61 @@ import java.util.List;
  */
 @Service
 public class DefaultRedisOpService implements RedisOperationInterface {
-	protected static final Logger log = LoggerFactory.getLogger(DefaultRedisOpService.class);
+    protected static final Logger log = LoggerFactory.getLogger(DefaultRedisOpService.class);
 
-	@Autowired
-	private StringRedisTemplate stringRedisTemplate;
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
-	@Override
-	public String getKeyString(String key) throws Exception {
-		log.trace("开始获取redis值");
-		try {
-			String value = stringRedisTemplate.opsForValue().get(key);
-			log.info("redis取值key={},value={}", key, value);
-			return value;
-		} catch (Exception e) {
-			log.error("redis值获取失败={}", e);
-			return null;
-		}
-	}
+    @Override
+    public String getKeyString(String key) throws Exception {
+        log.trace("开始获取redis值");
+        try {
+            String value = stringRedisTemplate.opsForValue().get(key);
+            log.info("redis取值key={},value={}", key, value);
+            return value;
+        } catch (Exception e) {
+            log.error("redis值获取失败={}", e);
+            return null;
+        }
+    }
 
-	@Override
-	public String setKeyString(String key, String value) throws Exception {
-		log.trace("开始设置redis值");
-		try {
-			stringRedisTemplate.opsForValue().set(key, value);
-			log.info("redis设置key={},value={}", key, value);
-			return value;
-		} catch (Exception e) {
-			log.error("redis 设置值失败={}", e);
-			return null;
-		}
-	}
+    @Override
+    public String setKeyString(String key, String value) throws Exception {
+        log.trace("开始设置redis值");
+        try {
+            stringRedisTemplate.opsForValue().set(key, value);
+            log.info("redis设置key={},value={}", key, value);
+            return value;
+        } catch (Exception e) {
+            log.error("redis 设置值失败={}", e);
+            return null;
+        }
+    }
 
-	@Override
-	public List getList(String key) throws Exception {
-		log.trace("开始获取redis值");
-		try {
-			List<String> value = stringRedisTemplate.opsForList().range(key, 0, -1);
-			log.info("redis取值key={},value={}", key, value);
-			return value;
-		} catch (Exception e) {
-			log.error("redis值获取失败={}", e);
-			return null;
-		}
-	}
+    @Override
+    public List getList(String key) throws Exception {
+        log.trace("开始获取redis值");
+        try {
+            List<String> value = stringRedisTemplate.opsForList().range(key, 0, -1);
+            log.info("redis取值key={},value={}", key, value);
+            return value;
+        } catch (Exception e) {
+            log.error("redis值获取失败={}", e);
+            return null;
+        }
+    }
 
-	@Override
-	public List setList(String key, String value) throws Exception {
-		log.trace("开始设置redis值");
-		try {
-			stringRedisTemplate.opsForList().rightPush(key, value);
-			log.info("redis取值key={},value={}", key, value);
-			return getList(key);
-		} catch (Exception e) {
-			log.error("redis 设置值失败={}", e);
-			return null;
-		}
+    @Override
+    public List setList(String key, String value) throws Exception {
+        log.trace("开始设置redis值");
+        try {
+            stringRedisTemplate.opsForList().rightPush(key, value);
+            log.info("redis取值key={},value={}", key, value);
+            return getList(key);
+        } catch (Exception e) {
+            log.error("redis 设置值失败={}", e);
+            return null;
+        }
 
-	}
+    }
 }
