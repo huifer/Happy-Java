@@ -41,7 +41,7 @@
     </org.apache.maven.plugins.maven-compiler-plugin.version>
     <!--项目依赖管理-->
     <springboot.version>2.1.7.RELEASE</springboot.version>
-    <mysql.mysql-connector-java.version>5.1.45</mysql.mysql-connector-java.version>
+    <mysql.mysql-connector-java.version>8.0.16</mysql.mysql-connector-java.version>
     <com.alibaba.druid.version>1.1.8</com.alibaba.druid.version>
     <mybatis.spring-boot.version>2.1.0</mybatis.spring-boot.version>
     <lombok.version>1.18.2</lombok.version>
